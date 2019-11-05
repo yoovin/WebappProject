@@ -2,9 +2,9 @@
 WebApp Development Team project
 
 ## TechStack
-Front
+#### Front
 * React
 
-Backend
+#### Backend
 * Node.js
 * Express
