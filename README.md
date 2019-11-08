@@ -8,3 +8,4 @@
 #### Backend
 * Node.js
 * Express
+* MongoDB
