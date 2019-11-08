@@ -1,5 +1,5 @@
 # WebappProject
-WebApp Development Team project
+2019-2 Web Application Development Team project
 
 ## TechStack
 #### Front
