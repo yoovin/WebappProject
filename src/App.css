@@ -1,22 +1,166 @@
-.App {
+body{
+  padding-top: 20px;
+  background-color: black;
+}
+.all-display{
+  width: 100%;
+  height: 100%;
+  
+/*    background-color: #333333;*/
+}
+.main{
+  border-bottom-color: black;
+  border: 2px solid #343a40;
+  width: 1140px;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+.leftside{
+  width: 240px;
+  float: left;
   text-align: center;
+/*    padding-left: 8px;*/
+/*    border: 2px solid black;*/
+  padding: 5px;
+  overflow: hidden;
+}
+.rightside{
+  
+  width: 890px;
+  float: right;
+/*    border: 2px solid black;*/
+/*    height: 750px;*/
+  overflow: hidden;
+}
+.bottom{
+  overflow: hidden;
+  width: 100%;
+}
+.display-3{
+  margin: 3px;
+  width: 49.3%;
+/*    height: 250px;*/
+/*    border: 2px solid black;*/
+}
+.display-3 .hr-short{
+  width: 10%;
+  border: 2px solid black;
+  padding: 0px;
+  margin: 0px;
+  float: left;
 }
 
-.App-logo {
-  height: 40vmin;
+.display-3 .hr-long{
+  float: left;
+  width: 85%;
+  border: 2px solid gray;
+/*    padding: 0px;*/
+  margin: 0px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.left{
+  float: left;
+}
+.right{
+  float: right;
+}
+.perfect{
+  width: 100%;   
+}
+.display-4{
+  border: 2px solid black;
+  width: 100%;
+  height: 230px;
+  overflow: hidden;
+}
+.maintitle{
+  font-size: 25px;
+}
+.font-italic{
+  font-style:italic;
+  font-size:5rem;
+  margin: 0px;
+  padding: 15px;
+}
+.content{
+  text-align: right;
+  padding-right: 20px;
+  font-size: 20px;
+}
+h1{
+  font-family: arial;
+}
+.display-2{
+  background-color: #B5B5B5;
+  height: 370px;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 2px solid white;
+  border-radius: 10px;
+} 
+.display-2 h1{
+  font-size: 60pt;
+  font-weight: bold;
+}
+.display-2 hr{
+  width: 97%;
+  border: solid 1px white;
+}
+.news, .notice{
+/*    border: 4px solid red;*/
+  border-radius: 4px;
+  margin: 2px;
+/*    background-color: */
+}
+.display-1{
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #343a40;
   color: white;
 }
+.display-1 .code{
+  color: #E6749D;
+}
+.display-1-1{
+  margin-left: 2%;
+  width: 550px;
+}
+.display-5{
+  margin: 5px;
+}
 
-.App-link {
-  color: #09d3ac;
+.profile-box{
+  border: 2px soild black;
+}
+
+.research-box{
+  border: 2px solid black;
+  border-radius: 15px;
+  width: 280px;
+  height:460px;
+  padding: 5px;
+  margin: 5px;
+  float: left;
+}
+.research-box img{
+  margin-top: 10px;
+  margin-left: 22%;
+  margin-right: 22%;
+}
+.hr-research{
+  border:2px solid black;
+  border-radius: 10px;
+  width: 98%;
+  margin: 2px;
+}
+.resarch-content p{
+  margin-top: 15px;
+  text-align: center;
+  font-size: 15pt;
+  font-weight: bold;
+}
+
+.resarch-content li{
+  font-size: 15px;
 }
