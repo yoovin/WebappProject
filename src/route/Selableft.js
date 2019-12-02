@@ -10,12 +10,13 @@ export default class Selableft extends Component {
         return (
             <div className="leftside">
                 <div className="list-group">
-                    <Link to="/" className="list-group-item list-group-item-action list-group-item-black">SELab</Link><hr/>
-                    <Link to="research" className="list-group-item list-group-item-action list-group-item-primary">Research</Link><hr/>
-                    <Link to="/publication" className="list-group-item list-group-item-action list-group-item-secondary">Publication</Link><hr/>
-                    <Link to="/member" className="list-group-item list-group-item-action list-group-item">Member</Link><hr/>
-                    <Link to="/course" className="list-group-item list-group-item-action list-group-item">Course</Link><hr/>
-                    <Link to="/login" className="list-group-item list-group-item-action list-group-item-info">Login</Link>
+                    <span onClick={()=>this.props.history.push("/")}  className="list-group-item list-group-item-action list-group-item-black">SELab</span><hr/>
+                    <span onClick={()=>this.props.history.push("research")}  className="list-group-item list-group-item-action list-group-item-primary">Research</span><hr/>
+                    <span onClick={()=>this.props.history.push("/publication")}  className="list-group-item list-group-item-action list-group-item-secondary">Publication</sapn><hr/>
+                    <span onClick={()=>this.props.history.push("/member")}  className="list-group-item list-group-item-action list-group-item">Member</span><hr/>
+                    <span onClick={()=>this.props.history.push("/course")}  className="list-group-item list-group-item-action list-group-item">Course</span><hr/>
+                    <span onClick={()=>this.props.history.push("/todo")}  className="list-group-item list-group-item-action list-group-item">Todo</span><hr/>
+                    <span onClick={()=>this.props.history.push("/login")}  className="list-group-item list-group-item-action list-group-item-info">Login</span>
                 </div>
             </div>
         )
