@@ -4,6 +4,7 @@
 ## TechStack
 #### Front
 * React
+* Scss
 
 #### Backend
 * Node.js

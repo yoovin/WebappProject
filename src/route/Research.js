@@ -12,7 +12,7 @@ export default class Research extends Component {
                     <h2 className="h2-research"> Research Area</h2>
                     <hr className="hr-research"/>
                     <div className="research-box">
-                        <img src={key} className="Research-img" />
+                        <img src={key} className="Research-img" width="150;"/>
                         <div className="resarch-content">
                             <p>Web and Web security</p>
                             <ul>
@@ -24,7 +24,7 @@ export default class Research extends Component {
                         </div>
                     </div>
                     <div className="research-box">
-                        <img src={tree} className="Research-img"/>
+                        <img src={tree} className="Research-img" width="150;"/>
                         <div className="resarch-content">
                             <p>Formal Engineering Methods</p>
                             <ul>
@@ -37,7 +37,7 @@ export default class Research extends Component {
 
                     </div>
                     <div className="research-box">
-                        <img src={product} className="Research-img"/>
+                        <img src={product} className="Research-img" width="150;"/>
                         <div className="resarch-content">
                             <p>Requirement Engineering</p>
                             <ul>
@@ -49,7 +49,7 @@ export default class Research extends Component {
                         </div>
                     </div>
                     <div className="research-box">
-                        <img src={realtime} className="Research-img"/>
+                        <img src={realtime} className="Research-img" width="150;"/>
                         <div className="resarch-content">
                             <p>Real-Time Software Engineering</p>
                             <ul>
@@ -61,7 +61,7 @@ export default class Research extends Component {
                         </div>
                     </div>
                     <div className="research-box">
-                        <img src={xml} className="Research-img"/>
+                        <img src={xml} className="Research-img" width="150;"/>
                         <div className="resarch-content">
                             <p>Semi-structured Data</p>
                             <ul>

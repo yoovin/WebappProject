@@ -27,6 +27,7 @@ body{
     /*    border: 2px solid black;*/
         padding: 5px;
         overflow: hidden;
+        font-family: 'Bitter', serif;
     }
     .rightside{
         
