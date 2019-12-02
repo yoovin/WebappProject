@@ -9,6 +9,12 @@ const port = process.env.PORT || 5000
 const Course = require('./Model/Course')
 const Member = require('./Model/Member')
 const Publication = require('./Model/Publication')
+const Notice = require('./Model/Notice')
+const Todo = require('./Model/Todo')
+
+// Libs
+const Serverlib = require('./Lib/Serverlib')
+const Todolib = require('./Lib/Todolib')
 
 var db = mongoose.connection
 db.on('error', console.error)
@@ -22,33 +28,23 @@ mongoose.connect("mongodb://localhost/webtest")
 app.use(bodyParser.json())
 
 // app.get
-app.get('/', cors() , (req, res)=>{
-    res.send("Hello world!")
+app.get('/api/getMember', cors(), (req, res)=>{
+    Serverlib.getMember(req, res, Member)
 })
 
-app.get('/getMember', cors(), (req, res)=>{
-    Member.find((err, data)=>{
-        if(err) return res.status(500).send({error:'database failure'})
-        res.json(data)
-    })
+// Publication 
+app.get('/api/getPublication', cors(), (req, res)=>{
+    Serverlib.getPublication(req, res, Publication)
+})
+
+// Notice
+app.get('/api/getNotice', cors(), (req, res)=>{
+    Serverlib.getNotice(req, res, Notice)
 })
 
 // app.post
-app.post('/addMember', cors(), (req, res)=>{
-    let member = new Member({
-        name: req.body.name,
-        desc: req.body.desc
-    })
-
-    member.save((err)=>{
-        if(err){
-            console.error(err)
-            res.json({result:0})
-        } else {
-            console.log("Database added!")
-            res.json({result:1})
-        }
-    })
+app.post('/post/addMember', cors(), (req, res)=>{
+    Serverlib.addMember(req, res, Member)
 })
 
 // app.post('/addCourse', cors(), (req, res)=> {
@@ -57,21 +53,34 @@ app.post('/addMember', cors(), (req, res)=>{
 //     })
 // })
 
-app.post('/addPublication', cors(), (req, res)=> {
-    let publication = new Publication({
-        sector: req.body.sector,
-        desc: req.body.desc
-    })
+app.post('/post/addPublication', cors(), (req, res)=> {
+    Serverlib.addPublication(req, res, Publication)
+})
 
-    publication.save((err)=>{
-        if(err){
-            console.error(err)
-            res.json({result:0})
-        } else {
-            console.log("Database added!")
-            res.json({result:1})
-        }
-    })
+app.post('/post/addNotice', cors(), (req, res)=>{
+    Serverlib.addNotice(req, res, Notice)
+})
+
+
+// Todo side
+app.get('/api/getTodo', (req, res)=>{
+    Todolib.findTodo(req, res, Todo)
+})
+
+app.post('/post/insertTodo', (req, res)=>{
+    Todolib.insertTodo(req, res, Todo)
+})
+
+app.post('/post/updateTodo', (req, res)=>{
+    Todolib.updateTodo(req, res, Todo)
+})
+
+app.post('/post/deleteTodo', (req, res)=>{
+    Todolib.deleteTodo(req, res, Todo)
+})
+
+app.post('/post/isDoneCheck', (req, res, Todo)=>{
+    Todolib.isDoneCheck(req, res, Todo)
 })
 
 
