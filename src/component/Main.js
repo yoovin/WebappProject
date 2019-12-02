@@ -10,6 +10,7 @@ import Publication from '../route/Publication';
 import Course from '../route/Course';
 import Research from '../route/Research';
 import Member from '../route/Member';
+import Todomain from '../Todo/Todomain';
 
 export default class Main extends Component {
     render() {
@@ -27,6 +28,7 @@ export default class Main extends Component {
                     <Route exact path="/course" component={Course}/>
                     <Route exact path="/research" component={Research}/>
                     <Route exact path="/member" component={Member}/>
+                    <Route exact path="/todo" component={Todomain}/>
 
                     {/* Another component */}
                     <Route path="/" component={Selableft}/>

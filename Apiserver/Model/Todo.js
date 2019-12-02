@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const todoSchema = new mongoose.Schema({
-    id:{type:String, required:true},
+    user:{type:String, required:true},
     content:{type:String, required:true},
     isDone:{type:Boolean, required:true, default:false},
     isDeleted:{type:Boolean, required:true, default:false}

@@ -2,57 +2,57 @@ import React from 'react';
 import './Todomain.scss';
 import Todolist from './component/Todolist'
 import Todoslide from './component/Todoslide';
-import Headforanimate from './component/Headforanimate'
+// import Headforanimate from './component/Headforanimate'
+import Axios from 'axios'
 
 export default class Todomain extends React.Component{
 
-constructor(props){
-  super(props)
-  this.state = {
+state = {
     todo:'',
-    id:'' 
+    user:'2018049807',
+    menu:true
     // This is id if id is exist
     // id:'2018049807' // Test id
-  }
 }
 
 stateRefresh = () =>{
   this.callApi()
-  .then(res => this.setState({todo:res}))
+  .then(res => {
+      this.setState({todo:res.data})
+    })
   .catch(err => console.log(err))
 }
 
-callApi = async () => {
-  const response = await fetch(`/api/todo/${this.state.user}`)
-  const body = await response.json()
-  console.log('callApied!')
-  return body
+callApi = () =>{
+    return Axios.get('/api/findTodo',{
+        params:{
+            user:this.state.user
+        }
+    })
 }
 
 selectMenu = () => {
   !this.state.menu ? this.setState({menu:true}) : this.setState({menu:false})
 }
 
-componentDidMount(){
+componentWillMount(){
   this.setState({id:this.props.id})
   this.stateRefresh()
 
 }
 
   render(){
-    if(this.state.id){
       return(
-        <body>
-          <Headforanimate/>
+        <div className="rightside">
+          {/* <Headforanimate/> */}
           <Todoslide menu={this.state.menu} selectMenu={this.selectMenu}/>
-          <h1 className="title">{this.state.name}의 해야할일</h1>
+          {/* <h1 className="title">{this.state.user}의 해야할일</h1> */}
           <Todolist user={this.state.user} 
           todo={this.state.todo} 
           menu={this.state.menu} 
           stateRefresh={this.stateRefresh}
           />
-        </body>
+        </div>
         )
-    
-  }
+    }
 }

@@ -46,7 +46,7 @@ class Todoupdate extends React.Component{
             await this.textInput.focus()
         }else if(this.state.todo.length === 0){
 
-            await alert('내용은 한글자 이상 있어야 합니다!')
+            await alert('The content must be at least one!')
             await this.setState({isModify:false, todo:this.props.content})
 
         } else if(this.state.isModify === true && this.state.todo !== this.props.content){
@@ -77,10 +77,10 @@ class Todoupdate extends React.Component{
     modifyTodo = ()=>{
         return axios({
             method:'post',
-            url:'/api/todo/update',
+            url:'/post/updateTodo',
             data:{
                 user:this.props.user,
-                id:this.props.id,
+                _id:this.props._id,
                 content:this.state.todo
             }
         })

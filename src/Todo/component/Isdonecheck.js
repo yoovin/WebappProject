@@ -20,10 +20,10 @@ class Isdonecheck extends React.Component{
     doneTodo = () => {
         return axios({
             method:'post',
-            url:'/api/todo/isdone',
+            url:'/post/isDoneCheck',
             data:{
                 user:this.props.user,
-                id:this.props.id,
+                _id:this.props._id,
                 isdone:!this.state.carddone
             }
         })
@@ -32,7 +32,7 @@ class Isdonecheck extends React.Component{
     render(){
         return(
             <div className="Isdonecheck">
-                <button className="Checkicon" title={this.state.carddone ? "취소" : "완료"}
+                <button className="Checkicon" title={this.state.carddone ? "cancel" : "done"}
                 onClick={this.handleChecked}><Checkicon size="3x"/></button>
             </div>
         )

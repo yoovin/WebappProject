@@ -12,10 +12,10 @@ class Tododelete extends React.Component{
     deleteTodo = () => {
         return axios({
             method:'post',
-            url:'/api/todo/delete',
+            url:'/post/deleteTodo',
             data:{
                 user:this.props.user,
-                id:this.props.id
+                _id:this.props._id
             }
         })
     } 

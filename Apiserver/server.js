@@ -63,11 +63,11 @@ app.post('/post/addNotice', cors(), (req, res)=>{
 
 
 // Todo side
-app.get('/api/getTodo', (req, res)=>{
+app.get('/api/findTodo', cors(), (req, res)=>{
     Todolib.findTodo(req, res, Todo)
 })
 
-app.post('/post/insertTodo', (req, res)=>{
+app.post('/post/insertTodo', cors(), (req, res)=>{
     Todolib.insertTodo(req, res, Todo)
 })
 
@@ -79,7 +79,7 @@ app.post('/post/deleteTodo', (req, res)=>{
     Todolib.deleteTodo(req, res, Todo)
 })
 
-app.post('/post/isDoneCheck', (req, res, Todo)=>{
+app.post('/post/isDoneCheck', (req, res)=>{
     Todolib.isDoneCheck(req, res, Todo)
 })
 

@@ -10,7 +10,7 @@ class Addform extends React.Component{
     addTodo = () => {
         return axios({
             method:'post',
-            url:'/api/todo',
+            url:'/post/insertTodo',
             data:{
                 user:this.props.user,
                 content:this.state.todo
@@ -26,7 +26,6 @@ class Addform extends React.Component{
         e.preventDefault()
         this.addTodo()
         .then((res) => {
-            console.log(res.data)
             this.props.stateRefresh()
             this.setState({todo:''})
         })
