@@ -76,7 +76,7 @@ export default class Selabright extends Component {
                     </div>
                     <div className="display-4">
                         
-                    {/* <Selabmap/> */}
+                    <Selabmap/>
                     </div>
                 </div>
         )
