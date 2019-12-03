@@ -12,7 +12,7 @@ const Publication = require('./Model/Publication')
 const Notice = require('./Model/Notice')
 const Todo = require('./Model/Todo')
 
-// Libs
+// Librarys
 const Serverlib = require('./Lib/Serverlib')
 const Todolib = require('./Lib/Todolib')
 
