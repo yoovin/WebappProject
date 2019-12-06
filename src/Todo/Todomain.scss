@@ -50,7 +50,7 @@ $done: #D6FFA1;
 }
 
 .Todotext{
-    margin-top: 15px;
+    // margin-top: 15px;
     font-family: 'Jua', sans-serif;
     font-size: 20px;
     float: left;
@@ -65,7 +65,9 @@ $done: #D6FFA1;
     outline: none;
     background-repeat:no-repeat;
     border: none;
-    margin: 5px;
+    // margin-bottom: 5px;
+    // padding-bottom: 15px;
+    // overflow: hidden;
 }
 
 .Deleteicon:hover{
@@ -114,6 +116,8 @@ $done: #D6FFA1;
 }
 
 .todocard{
+    overflow: hidden;
+    
     margin: 8px;
     padding: 15px;
     height: 50px;

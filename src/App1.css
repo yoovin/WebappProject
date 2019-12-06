@@ -27,7 +27,6 @@ body{
     /*    border: 2px solid black;*/
         padding: 5px;
         overflow: hidden;
-        font-family: 'Bitter', serif;
     }
     .rightside{
         
@@ -74,8 +73,7 @@ body{
     .display-4{
         border: 2px solid black;
         width: 100%;
-        /* width:300px; */
-        height: 300px;
+        height: 230px;
         overflow: hidden;
     }
     .maintitle{
@@ -303,44 +301,66 @@ body{
         overflow: auto;
     }
     
-    /* Publication */
+    
+    .pub-title{
+        width:700px;
+        float: left;
+        padding: 10px
+    }
+    .pub-url{
+    /*    float: right;*/
+    }
+    .pub-aa{
+        overflow: hidden;
+        width: 100%;
+    }
+    .pub-desc{
+        width: 800px;
+        padding-left: 5px;
+        
+    }
+    
+    .pub-sub{
+        padding: 5px;
+        float: left;
+    }
 
-    .box {
-        border-left: 3px solid red;
-        padding-left: 10px;
-          
-      }
-      
-      .nav_box {
-        vertical-align: bottom;
-        background-color: black;
-        color: white;
-        padding: 10px;
-          border-radius: 3px;
-          margin-left: 5px;
-      }
-      
-      .nav_box:hover {
-        background-color: #1E90FF;
-      }
-      
-      nav a {
-        text-decoration: none;
-        font-size: 15px;
-      }
-      
-      .box:hover {
-        background-color: #F5F5DC;
-      }
-      
-      .publication_list a {
-        text-decoration: none;
-        color: black;
-      }
-      
 
+.box {
+    border-left: 3px solid red;
+    padding-left: 10px;
+      
+  }
+  
+  .nav_box {
+    vertical-align: bottom;
+    background-color: black;
+    color: white;
+    padding: 10px;
+      border-radius: 3px;
+      margin-left: 5px;
+  }
+  
+  .nav_box:hover {
+    background-color: #1E90FF;
+  }
+  
+  nav a {
+    text-decoration: none;
+    font-size: 15px;
+  }
+  
+  .box:hover {
+    background-color: #F5F5DC;
+  }
+  
+  .publication_list a {
+    text-decoration: none;
+    color: black;
+  }
+  
       /* Left side */
-      hr{
+      /* hr{
         width: 234px;
     }
     
@@ -350,4 +370,4 @@ body{
         padding-bottom: 8px;
         font-size: 18px;
         border-radius: 10px;
-    }
+    } */

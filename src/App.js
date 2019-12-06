@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 // import './App.css';
 import './App1.css'
+import './boot.css'
 import {BrowserRouter as Router, Route} from "react-router-dom"
 import Main from './component/Main';
 
