@@ -1,70 +1,126 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 
 export default class Admin extends Component {
+
+    state = {
+        // Publication
+        trans:'',
+        sector:'',
+        desc:'',
+        url:'',
+
+        // Course
+        
+    }
+
+    handleSectorChange = (e) => {
+        this.setState({sector:e.target.value})
+    }
+
+    handleDescChange = (e) => {
+        this.setState({desc:e.target.value})
+    }
+
+    handleUrlChange = (e) => {
+        this.setState({url:e.target.value})
+    }
+
+    handleSubmitPub = (e) => {
+        const {trans, sector, desc, url} = this.state
+        e.preventDefault()
+        if(trans && sector && desc && url){
+            axios({
+                method:'post',
+                url:'/post/addPublication',
+                data:{
+                    trans:trans,
+                    sector:sector,
+                    desc:desc,
+                    url:url
+                }
+            })
+            .then(res => {
+                if(res.data.result === 1){
+                    console.log("Add complete")
+                    this.setState({
+                        trans:'',
+                        sector:'',
+                        desc:'',
+                        url:''
+                    })
+                }else if(res.data.result === 0){
+                    console.error("Add error occured!")
+                }
+            })
+        }
+    }
+
     render() {
+        console.log(this.state)
         return (
-            <div class="rightside">
+            <div className="rightside">
                     
-                    <h2 class="h2-research"> Admin Setting Page</h2>
-                    <hr class="hr-research" />
+                    <h2 className="h2-research"> Admin Setting Page</h2>
+                    <hr className="hr-research" />
                     
                     <h3>Add Publication</h3>
-                    <div class="form-group">
-                        <div class="pub-trans">
-                            <label class="radio-inline">
-                                <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"/> International Conference
+                    <div className="form-group">
+                        <div className="pub-trans">
+                            <label className="radio-inline">
+                                <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" onChange={()=>this.setState({trans:"International Conference"})}/> International Conference
                             </label>
-                            <label class="radio-inline">
-                                <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"/> International Journal
+                            <label className="radio-inline">
+                                <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" onChange={()=>this.setState({trans:"International Journal"})}/> International Journal
                             </label>
-                            <label class="radio-inline">
-                                <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"/> Domestic Conference
+                            <label className="radio-inline">
+                                <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" onChange={()=>this.setState({trans:"Domestic Conference"})}/> Domestic Conference
                             </label>
-                            <label class="radio-inline">
-                                <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"/> Domestic Journal
+                            <label className="radio-inline">
+                                <input type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option4" onChange={()=>this.setState({trans:"Domestic Journal"})}/> Domestic Journal
                             </label>
                         </div>
-                        <div class="pub-title">
+                        <div className="pub-title">
                             <label for="exampleInputEmail1"></label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="title"/>
+                            <input type="email" className="form-control" id="exampleInputEmail1" placeholder="title" onChange={this.handleSectorChange} value={this.state.sector}/>
                         </div>
-                        <div class="pub-aa">
-                            <div class="pub-desc">
+                        <div className="pub-aa">
+                            <div className="pub-desc">
                                 <label for="exampleInputEmail1"></label>
-                                <div class="pub-sub">
-                                <input type="page" class="form-control" id="exampleInputEmail1" placeholder="page"/>
+                                <div className="pub-sub">
+                                <input type="page" className="form-control" id="exampleInputEmail1" placeholder="page" onChange={this.handleDescChange} value={this.state.desc}/>
                                 </div>
-                                <div class="pub-sub">
-                                <input type="url" class="form-control" id="exampleInputEmail1" placeholder="url"/>
+                                <div className="pub-sub">
+                                <input type="url" className="form-control" id="exampleInputEmail1" placeholder="url" onChange={this.handleUrlChange} value={this.state.url}/>
                                 </div>
-                                <div class="pub-sub">
-                                <button type="submit" class="btn btn-default">입력</button>
+                                <div className="pub-sub">
+                                <button type="submit" className="btn btn-default" onClick={this.handleSubmitPub}>입력</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <h3>Course</h3>
-                    <div class="form-group">
-                        <div class="pub-aa">
-                            <div class="pub-desc">
+                    <div className="form-group">
+                        <div className="pub-aa">
+                            <div className="pub-desc">
                                 <label for="exampleInputEmail1"></label>
-                                <div class="pub-sub">
-                                <input type="page" class="form-control" id="exampleInputEmail1" placeholder="year"/>
+                                <div className="pub-sub">
+                                <input type="page" className="form-control" id="exampleInputEmail1" placeholder="year"/>
                                 </div>
-                                <div class="pub-sub">
-                                <input type="url" class="form-control" id="exampleInputEmail1" placeholder="course title"/>
+                                <div className="pub-sub">
+                                <input type="url" className="form-control" id="exampleInputEmail1" placeholder="course title"/>
                                 </div>
                                 
-                                <div class="pub-sub">
-                                <input type="url" class="form-control" id="exampleInputEmail1" placeholder="link"/>
+                                <div className="pub-sub">
+                                <input type="url" className="form-control" id="exampleInputEmail1" placeholder="link"/>
                                 </div>
-                                <div class="pub-sub">
+                                <div className="pub-sub">
                                     <select>
                                         <option>Spring</option>      
                                         <option>Fall</option>
                                     </select>
                                 </div>
-                                <div class="pub-sub">
+                                <div className="pub-sub">
                                     <select>
                                         <option>Undergrauduate</option>      
                                         <option>Graduate</option>
@@ -72,26 +128,26 @@ export default class Admin extends Component {
                                 </div>
                                 
                                 
-                                <div class="pub-sub">
-                                <button type="submit" class="btn btn-default">입력</button>
+                                <div className="pub-sub">
+                                <button type="submit" className="btn btn-default">입력</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <h3>Add To Do</h3>
-                    <div class="form-group">
-                        <div class="pub-sub">
+                    <div className="form-group">
+                        <div className="pub-sub">
                                     <select>
                                         <option>Web App</option>      
                                         <option>Software Eng</option>
                                     </select>
                                 </div>
-                        <div class="pub-title">
+                        <div className="pub-title">
                             <label for="exampleInputEmail1"></label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="title"/>
+                            <input type="email" className="form-control" id="exampleInputEmail1" placeholder="title"/>
                         </div>
-                        <div class="pub-sub">
-                                <button type="submit" class="btn btn-default">입력</button>
+                        <div className="pub-sub">
+                                <button type="submit" className="btn btn-default">입력</button>
                                 </div>
                     </div>
 
