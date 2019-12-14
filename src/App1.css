@@ -380,3 +380,21 @@ body{
     margin: auto;
     background: white;
   }
+
+  /* black-border-line */
+
+  .out{
+    width: 100%;
+    text-align: center;
+  }
+  
+  .in{
+    margin-top:5%;
+    margin-bottom:5%;
+    display: inline-block;
+    padding:20px;
+    border:5px solid #333333;
+    border-radius: 10px;
+    width:60%;
+    text-align: center;
+  }

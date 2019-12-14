@@ -15,9 +15,9 @@ export default class Selableft extends Component {
         return (
             <div className="leftside">
                 <div className="list-group">
-                    <span onClick={()=>this.props.history.push("/")}  className="list-group-item list-group-item-action list-group-item-black">SELab</span>
-                    <span onClick={()=>this.props.history.push("research")}  className="list-group-item list-group-item-action list-group-item-primary">Research</span>
-                    <span onClick={()=>this.props.history.push("/publication")}  className="list-group-item list-group-item-action list-group-item-secondary">Publication</span>
+                    <span onClick={()=>this.props.history.push("/")}  className="list-group-item list-group-item-action list-group-item">SELab</span>
+                    <span onClick={()=>this.props.history.push("research")}  className="list-group-item list-group-item-action list-group-item">Research</span>
+                    <span onClick={()=>this.props.history.push("/publication")}  className="list-group-item list-group-item-action list-group-item">Publication</span>
                     <span onClick={()=>this.props.history.push("/member")}  className="list-group-item list-group-item-action list-group-item">Member</span>
                     <span onClick={()=>this.props.history.push("/course")}  className="list-group-item list-group-item-action list-group-item">Course</span>
                     <span onClick={()=>{

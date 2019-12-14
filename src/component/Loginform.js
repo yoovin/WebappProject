@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import TextField from '@material-ui/core/TextField';
 
 export default class Loginform extends Component {
 
@@ -77,10 +78,25 @@ export default class Loginform extends Component {
         if(!this.state.login && this.state.loginForm){
             return(
                 <div className="list-group-item list-group-item-action list-group-item">
-                    <input value={this.state.id} onKeyPress={this.handleKeyPress} onChange={this.handleChangeId} type="text" placeholder="ID"></input><br/>
-                    <input value={this.state.pw} onKeyPress={this.handleKeyPress} onChange={this.handleChangePw} type="password" placeholder="PassWord"></input><br/>
+                    <TextField 
+                    required
+                    onKeyPress={this.handleKeyPress}
+                    onChange={this.handleChangeId}
+                    value={this.state.id}
+                    id="standard-basic" 
+                    label="ID" 
+                    /><br/>
+                    <TextField 
+                    required
+                    onKeyPress={this.handleKeyPress}
+                    onChange={this.handleChangePw}
+                    value={this.state.pw}
+                    id="standard-basic" 
+                    label="Password" 
+                    type="password"
+                    /><br/>
                     <span style={this.styles}>{this.state.loginStatus}</span><br/>
-                    <span onClick={()=>this.props.history.push("/signup")}>SignUp</span> <span onClick={this.handleLoginState}>Login</span>
+                    <span onClick={()=>this.props.history.push("/register")}>SignUp</span> <span onClick={this.handleLoginState}>Login</span>
                 </div>
             )}else if(this.state.login && this.state.loginForm){
             return(

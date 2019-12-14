@@ -63,6 +63,10 @@ app.post('/post/addNotice', cors(), (req, res)=>{
     Serverlib.addNotice(req, res, Notice)
 })
 
+app.post('/post/enterCourse', (req, res) => {
+
+})
+
 
 // Todo side
 app.get('/api/findTodo', cors(), (req, res)=>{
@@ -94,5 +98,6 @@ app.post('/post/registerUser', (req, res)=>{
 app.post('/post/login', (req, res) =>{
     Loginlib.login(req, res, User)
 })
+
 
 app.listen(port, console.log(`Backend server running at ${port} port`))
