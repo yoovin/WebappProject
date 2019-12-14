@@ -32,13 +32,14 @@ export default class Loginform extends Component {
                 pw:this.state.pw
             }
         })
-        .then(res =>{
+        .then(async res => {
             let {result} = res.data
             if(result === "success"){
-                window.sessionStorage.setItem('name', res.data.name)
-                window.sessionStorage.setItem('stNum', res.data.stNum)
-                window.sessionStorage.setItem('isLogin', true)
-                this.setState({login:true, loginStatus:''})
+                await window.sessionStorage.setItem('name', res.data.name)
+                await window.sessionStorage.setItem('stNum', res.data.stNum)
+                await window.sessionStorage.setItem('isLogin', true)
+                await this.props.handleRefresh()
+                await this.setState({login:true, loginStatus:''})
             }else if(result === "password error"){
                 this.setState({
                     loginStatus:"Password incorrect",
@@ -55,14 +56,15 @@ export default class Loginform extends Component {
         })
     }
 
-    handleLogout = () =>{
-        window.sessionStorage.clear()
-        this.setState({
+    handleLogout = async () =>{
+        await window.sessionStorage.clear()
+        await this.setState({
             login: !this.state.login,
             loginForm: !this.state.loginForm,
             id:'',
             pw:''
             })
+        await this.props.handleRefresh()
     }
 
     handleKeyPress = (e) =>{

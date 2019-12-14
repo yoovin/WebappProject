@@ -89,10 +89,7 @@ export default class Course extends Component {
                                 </td>
                             </tr>
                         </table>
-                    </div>
-                   
-                    
-                    
+                    </div> 
                 </div>
         )
     }
