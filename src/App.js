@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
-// import './App.css';
-import './App1.css'
+import './App.css'
 import './boot.css'
-// import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter as Router, Route} from "react-router-dom"
 import Main from './component/Main';
 

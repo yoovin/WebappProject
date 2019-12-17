@@ -13,10 +13,8 @@ import Course from '../route/Course';
 import Research from '../route/Research';
 import Member from '../route/Member';
 import Todomain from '../Todo/Todomain';
-import Signup from '../route/Signup';
 import Admin from '../route/Admin';
 import Register from '../route/Register';
-import Chat from '../route/Chat';
 
 export default class Main extends Component {
     render() {
@@ -35,10 +33,8 @@ export default class Main extends Component {
                     <Route exact path="/research" component={Research}/>
                     <Route exact path="/member" component={Member}/>
                     <Route exact path="/todo" component={Todomain}/>
-                    <Route exact path="/signup" component={Signup}/>
                     <Route exact path="/admin" component={Admin}/>
                     <Route exact path="/register" component={Register}/>
-                    <Route exact path="/chat" component={Chat}/>
 
                     {/* Another component */}
                     <Route path="/" component={Selableft}/>
