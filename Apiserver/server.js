@@ -44,6 +44,11 @@ app.get('/api/getNotice', cors(), (req, res)=>{
     Serverlib.getNotice(req, res, Notice)
 })
 
+//User
+app.get('/api/getUser', cors(), (req, res) => {
+    Serverlib.getUser(req, res, User)
+})
+
 // app.post
 app.post('/post/addMember', cors(), (req, res)=>{
     Serverlib.addMember(req, res, Member)
@@ -63,8 +68,8 @@ app.post('/post/addNotice', cors(), (req, res)=>{
     Serverlib.addNotice(req, res, Notice)
 })
 
-app.post('/post/enterCourse', (req, res) => {
-
+app.post('/post/addCourse', (req, res) => {
+    Serverlib.addCourse(req, res, Course)
 })
 
 

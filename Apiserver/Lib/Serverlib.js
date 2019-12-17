@@ -52,6 +52,27 @@ exports.getNotice = (req, res, Notice) =>{
     }
 }
 
+exports.getUser = (req, res, User) => {
+    User.find((err,user)=>{
+        if(err){
+            console.error(err)
+            return res.status(500).send({error:'database failure'})
+        } 
+        // res.json({
+        //     "stNum":data.stNum,
+        //     "name":data.name
+        // })
+        res.json(user.map(data => {
+            return(
+                {
+                    "name":data.name,
+                    "stNum":data.stNum
+                }
+            )
+        }))
+    }).sort({stNum:1})
+}
+
 // Post side
 exports.addMember = (req, res, Member) =>{
     let member = new Member({
@@ -102,5 +123,11 @@ exports.addNotice = (req, res, Notice) =>{
             console.log("Notice added!")
             res.json({result:1})
         }
+    })
+}
+
+exports.addCourse = (req, res, Course) => {
+    let course = new Course({
+
     })
 }

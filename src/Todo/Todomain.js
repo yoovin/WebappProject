@@ -42,6 +42,9 @@ componentWillMount(){
 }
 
   render(){
+    if(window.sessionStorage.getItem('name') === null){
+      this.props.history.push('/')
+    }
       return(
         <div className="rightside">
           {/* <Headforanimate/> */}

@@ -12,6 +12,19 @@ export default class Admin extends Component {
 
         // Course
         
+        // Users todo
+        users:"",
+        stNum:"",
+        todo:""
+    }
+
+    componentWillMount(){
+        if(window.sessionStorage.getItem('name') === null){
+            this.props.history.push('/')
+        }else{
+            axios.get('/api/getUser')
+            .then(res => this.setState({users:res.data}))
+        }
     }
 
     handleSectorChange = (e) => {
@@ -24,6 +37,33 @@ export default class Admin extends Component {
 
     handleUrlChange = (e) => {
         this.setState({url:e.target.value})
+    }
+
+    handleStnumChange = (e) => {
+        this.setState({stNum:e.target.value})
+    }
+
+    handleTodoChange = (e) => {
+        this.setState({todo:e.target.value})
+    }
+
+    handleSubmitTodo = () => {
+        axios({
+            method:'post',
+            url:'/post/insertTodo',
+            data:{
+                user:this.state.stNum,
+                content:this.state.todo
+            }
+        })
+        .then(res => {
+            if(res.data.result === 1){
+                console.log("Add complete")
+                this.setState({todo:""})
+            }else if(res.data.result === 0){
+                console.error("Add error occured!")
+            }
+        })
     }
 
     handleSubmitPub = (e) => {
@@ -60,7 +100,6 @@ export default class Admin extends Component {
         console.log(this.state)
         return (
             <div className="rightside">
-                    
                     <h2 className="h2-research"> Admin Setting Page</h2>
                     <hr className="hr-research" />
                     
@@ -94,7 +133,7 @@ export default class Admin extends Component {
                                 <input type="url" className="form-control" id="exampleInputEmail1" placeholder="url" onChange={this.handleUrlChange} value={this.state.url}/>
                                 </div>
                                 <div className="pub-sub">
-                                <button type="submit" className="btn btn-default" onClick={this.handleSubmitPub}>입력</button>
+                                <button type="submit" className="btn btn-default" onClick={this.handleSubmitPub}>Add</button>
                                 </div>
                             </div>
                         </div>
@@ -129,7 +168,7 @@ export default class Admin extends Component {
                                 
                                 
                                 <div className="pub-sub">
-                                <button type="submit" className="btn btn-default">입력</button>
+                                <button type="submit" className="btn btn-default">Add</button>
                                 </div>
                             </div>
                         </div>
@@ -137,17 +176,21 @@ export default class Admin extends Component {
                     <h3>Add To Do</h3>
                     <div className="form-group">
                         <div className="pub-sub">
-                                    <select>
-                                        <option>Web App</option>      
-                                        <option>Software Eng</option>
+                                    <select onChange={this.handleStnumChange}>
+                                        <option value="" disabled selected>Select your student</option>
+                                        {this.state.users ? this.state.users.map(data => {
+                                            return(
+                                                <option value={data.stNum}>{data.stNum} , {data.name}</option>
+                                                )
+                                        }):''}
                                     </select>
                                 </div>
                         <div className="pub-title">
                             <label for="exampleInputEmail1"></label>
-                            <input type="email" className="form-control" id="exampleInputEmail1" placeholder="title"/>
+                            <input onChange={this.handleTodoChange} value={this.state.todo} type="email" className="form-control" id="exampleInputEmail1" placeholder="Todo"/>
                         </div>
                         <div className="pub-sub">
-                                <button type="submit" className="btn btn-default">입력</button>
+                                <button onClick={this.handleSubmitTodo} className="btn btn-default">Add</button>
                                 </div>
                     </div>
 

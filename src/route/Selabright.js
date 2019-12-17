@@ -44,7 +44,7 @@ export default class Selabright extends Component {
                     <div className="display-3 perfect">
                         <div className="maintitle">What's News</div>
                         <hr className="hr-short"/>
-                        <hr className="hr-long"/>
+                        <hr className="hr-long"/><br/>
                         <ul>
                             {this.state.news ? this.state.news.map((row)=>{
                                 return (
@@ -56,7 +56,7 @@ export default class Selabright extends Component {
                     <div className="display-3 left">
                         <div className="maintitle">Notice</div>
                         <hr className="hr-short"/>
-                        <hr className="hr-long"/>
+                        <hr className="hr-long"/><br/>
                         <ul>
                             {this.state.notice ? this.state.notice.map((row)=>{
                                     return (

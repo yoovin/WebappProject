@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
     pw:{type:String, required:true},
     email:{type:String, required:true},
     stNum:{type:Number, required:true, unique:true},
-    course:[{type:Number}]
+    // course:[{type:Number}]
 })
 
 module.exports = mongoose.model('user', userSchema)

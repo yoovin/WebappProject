@@ -7,7 +7,7 @@ exports.findTodo = (req, res, Todo)=>{
             return res.status(500).send({error:'database failure'})
         }
         res.json(todos)
-    })
+    }).sort({_id:-1})
 }
 
 exports.insertTodo = (req, res, Todo) =>{

@@ -8,14 +8,18 @@ class Addform extends React.Component{
     }
 
     addTodo = () => {
-        return axios({
-            method:'post',
-            url:'/post/insertTodo',
-            data:{
-                user:this.props.user,
-                content:this.state.todo
-            }
-        })
+        if(window.sessionStorage.getItem('name') === null){
+            window.location.reload()
+        }else{
+            return axios({
+                method:'post',
+                url:'/post/insertTodo',
+                data:{
+                    user:this.props.user,
+                    content:this.state.todo
+                }
+            })
+          }
     }
 
     handleValueChange = (e) => {

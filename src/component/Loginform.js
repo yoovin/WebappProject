@@ -10,7 +10,6 @@ export default class Loginform extends Component {
 
     state = {
         loginForm:false,
-        login:false,
         id:'',
         pw:'',
         loginStatus:''
@@ -40,7 +39,7 @@ export default class Loginform extends Component {
                 await window.sessionStorage.setItem('stNum', res.data.stNum)
                 await window.sessionStorage.setItem('isLogin', true)
                 await this.props.handleRefresh()
-                await this.setState({login:true, loginStatus:''})
+                await this.setState({loginStatus:''})
             }else if(result === "password error"){
                 this.setState({
                     loginStatus:"Password incorrect",
@@ -65,7 +64,7 @@ export default class Loginform extends Component {
             id:'',
             pw:''
             })
-        await this.props.handleRefresh()
+        await window.location.reload()
     }
 
     handleKeyPress = (e) =>{
@@ -75,7 +74,15 @@ export default class Loginform extends Component {
     }
 
     render() {
-        if(!this.state.login && this.state.loginForm){
+        if(window.sessionStorage.getItem('isLogin') === "true"){
+            return(
+                <div className="list-group-item list-group-item-action list-group-item">
+                    <span>Name: {window.sessionStorage.getItem('name')}</span><br/>
+                    <span>Stnum: {window.sessionStorage.getItem('stNum')}</span><br/>
+                    <span onClick={this.handleLogout} style={this.styles}>Logout</span>
+                </div>
+            ) 
+        }else if(window.sessionStorage.getItem('isLogin') === null && this.state.loginForm){
             return(
                 <div className="list-group-item list-group-item-action list-group-item">
                     <TextField 
@@ -98,16 +105,8 @@ export default class Loginform extends Component {
                     <span style={this.styles}>{this.state.loginStatus}</span><br/>
                     <span onClick={()=>this.props.history.push("/register")}>SignUp</span> <span onClick={this.handleLoginState}>Login</span>
                 </div>
-            )}else if(this.state.login && this.state.loginForm){
-            return(
-                <div className="list-group-item list-group-item-action list-group-item">
-                    <span>Name: {window.sessionStorage.getItem('name')}</span><br/>
-                    <span>Stnum: {window.sessionStorage.getItem('stNum')}</span><br/>
-                    <span onClick={this.handleLogout} style={this.styles}>Logout</span>
-                </div>
-            ) 
-        }else if(!this.state.login && !this.state.loginForm){
-            return <span onClick={()=>this.setState({loginForm:!this.state.loginForm})} className="list-group-item list-group-item-action list-group-item-info">Login</span>
+            )}else if(window.sessionStorage.getItem('isLogin') === null && !this.state.loginForm){
+            return <span onClick={()=>this.setState({loginForm:true})} className="list-group-item list-group-item-action list-group-item-info">Login</span>
         }
     }
 }
