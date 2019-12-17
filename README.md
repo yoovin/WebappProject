@@ -5,6 +5,8 @@
 #### Front
 * React
 * Scss
+* Bootstrap
+* Material UI
 
 #### Backend
 * Node.js

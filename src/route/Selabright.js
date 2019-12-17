@@ -46,7 +46,7 @@ export default class Selabright extends Component {
                             Software Engineering Laboratory Within the CSE Dept at HYU(ERICA)<br/>
                             Led by asst. prof. Scott Lee<br/>
                             Research Area: Web and Web Security. Formal Engineering Methods. Requirement Engineering. Real-Time Software Engineering. Semi-structured Data<br/><br/>
-                             <a className="btn btn-primary btn-lg" href="/research/" role="button">Learn more</a>
+                             <button className="btn btn-primary btn-lg" onClick={() => this.props.history.push('/research')} role="button">Learn more</button>
                         </div>
                     </div>
                     <div className="display-3 perfect">
