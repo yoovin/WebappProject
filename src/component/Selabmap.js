@@ -16,8 +16,8 @@ export default class Selabmap extends Component {
         return (
             <div>
                 <SelabGoogleMap
-                containerElement={ <div style={{ height: `300px`, width: '300px' }} /> }
-                mapElement={ <div style={{ height: `100%` }} /> }
+                containerElement={ <div style={{ height: `300px`, width: '890px' }} /> }
+                mapElement={ <div style={{ height: `100%`}} /> }
                 isMarkerShown />
             </div>
         )

@@ -26,6 +26,14 @@ export default class Selabright extends Component {
         })
         .then(res=>this.setState({notice:res.data}))
         .catch(err=>console.error(err))
+
+        Axios.get('/api/getCourse',{
+            params:{
+                number:4
+            }
+        })
+        .then(res=>this.setState({course:res.data}))
+        .catch(err=>console.error(err))
     }
 
     render() {
@@ -68,10 +76,13 @@ export default class Selabright extends Component {
                     <div className="display-3 right">
                         <div className="maintitle">Course</div>
                         <hr className="hr-short"/>
-                        <hr className="hr-long"/>
+                        <hr className="hr-long"/><br/>
                         <ul>
-                            <li>Web Applicatoin</li>
-                            <li>어쩌고저쩌고</li>
+                            {this.state.course ? this.state.course.map((row)=>{
+                                    return (
+                                        <li>{row.title}</li>
+                                    ) 
+                                }):'Loading'}
                         </ul>
                     </div>
                     <div className="display-4">

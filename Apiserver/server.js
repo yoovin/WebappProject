@@ -30,6 +30,7 @@ mongoose.connect("mongodb://localhost/webtest")
 app.use(bodyParser.json())
 
 // app.get
+// Member
 app.get('/api/getMember', cors(), (req, res)=>{
     Serverlib.getMember(req, res, Member)
 })
@@ -44,9 +45,14 @@ app.get('/api/getNotice', cors(), (req, res)=>{
     Serverlib.getNotice(req, res, Notice)
 })
 
-//User
+// User
 app.get('/api/getUser', cors(), (req, res) => {
     Serverlib.getUser(req, res, User)
+})
+
+// Course
+app.get('/api/getCourse', cors(), (req, res) => {
+    Serverlib.getCourse(req, res, Course)
 })
 
 // app.post
@@ -54,11 +60,9 @@ app.post('/post/addMember', cors(), (req, res)=>{
     Serverlib.addMember(req, res, Member)
 })
 
-// app.post('/addCourse', cors(), (req, res)=> {
-//     let course = new Course({
-
-//     })
-// })
+app.post('/addCourse', cors(), (req, res)=> {
+    Serverlib.addCourse(req, res, Course)
+})
 
 app.post('/post/addPublication', cors(), (req, res)=> {
     Serverlib.addPublication(req, res, Publication)

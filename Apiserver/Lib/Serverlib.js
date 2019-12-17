@@ -57,11 +57,7 @@ exports.getUser = (req, res, User) => {
         if(err){
             console.error(err)
             return res.status(500).send({error:'database failure'})
-        } 
-        // res.json({
-        //     "stNum":data.stNum,
-        //     "name":data.name
-        // })
+        }
         res.json(user.map(data => {
             return(
                 {
@@ -71,6 +67,26 @@ exports.getUser = (req, res, User) => {
             )
         }))
     }).sort({stNum:1})
+}
+
+exports.getCourse = (req, res, Course) => {
+    if(req.query.number){
+        Course.find((err,data)=>{
+            if(err){
+                console.error(err)
+                return res.status(500).send({error:'database failure'})
+            } 
+            res.json(data)
+        }).sort({_id:-1}).limit(parseInt(req.query.number))
+    }else{
+        Course.find((err,data)=>{
+            if(err){
+                console.error(err)
+                return res.status(500).send({error:'database failure'})
+            } 
+            res.json(data)
+        }).sort({_id:-1})
+    }
 }
 
 // Post side
@@ -128,6 +144,20 @@ exports.addNotice = (req, res, Notice) =>{
 
 exports.addCourse = (req, res, Course) => {
     let course = new Course({
-
+        year:req.body.year,
+        semester:req.body.semester,
+        title:req.body.title,
+        grade:req.body.grade,
+        link:req.body.link,
+        courseNum:req.body.courseNum
+    })
+    course.save(err =>{
+        if(err){
+            console.error(err)
+            res.json({result:0})
+        } else {
+            console.log("Course added!")
+            res.json({result:1})
+        }
     })
 }

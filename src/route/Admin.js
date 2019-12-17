@@ -11,6 +11,12 @@ export default class Admin extends Component {
         url:'',
 
         // Course
+        year:"",
+        semester:"spring",
+        title:"",
+        grade:"Undergrauduate",
+        link:"",
+        courseNum:"",
         
         // Users todo
         users:"",
@@ -26,7 +32,7 @@ export default class Admin extends Component {
             .then(res => this.setState({users:res.data}))
         }
     }
-
+    // Publication
     handleSectorChange = (e) => {
         this.setState({sector:e.target.value})
     }
@@ -37,33 +43,6 @@ export default class Admin extends Component {
 
     handleUrlChange = (e) => {
         this.setState({url:e.target.value})
-    }
-
-    handleStnumChange = (e) => {
-        this.setState({stNum:e.target.value})
-    }
-
-    handleTodoChange = (e) => {
-        this.setState({todo:e.target.value})
-    }
-
-    handleSubmitTodo = () => {
-        axios({
-            method:'post',
-            url:'/post/insertTodo',
-            data:{
-                user:this.state.stNum,
-                content:this.state.todo
-            }
-        })
-        .then(res => {
-            if(res.data.result === 1){
-                console.log("Add complete")
-                this.setState({todo:""})
-            }else if(res.data.result === 0){
-                console.error("Add error occured!")
-            }
-        })
     }
 
     handleSubmitPub = (e) => {
@@ -93,8 +72,100 @@ export default class Admin extends Component {
                     console.error("Add error occured!")
                 }
             })
+        }else{
+            console.log("please input complete")
         }
     }
+
+    // Todo
+    handleStnumChange = (e) => {
+        this.setState({stNum:e.target.value})
+    }
+
+    handleTodoChange = (e) => {
+        this.setState({todo:e.target.value})
+    }
+
+    handleSubmitTodo = () => {
+        axios({
+            method:'post',
+            url:'/post/insertTodo',
+            data:{
+                user:this.state.stNum,
+                content:this.state.todo
+            }
+        })
+        .then(res => {
+            if(res.data.result === 1){
+                console.log("Add complete")
+                this.setState({todo:""})
+            }else if(res.data.result === 0){
+                console.error("Add error occured!")
+            }
+        })
+    }
+
+    // Course
+    handleYearChange = (e) => {
+        this.setState({year:e.target.value})
+    }
+
+    handleSemesterChange = (e) => {
+        this.setState({semester:e.target.value})
+    }
+
+    handleTitleChange = (e) => {
+        this.setState({title:e.target.value})
+    }
+
+    handleGradeChange = (e) => {
+        this.setState({grade:e.target.value})
+    }
+
+    handleLinkChange = (e) => {
+        this.setState({link:e.target.value})
+    }
+
+    handleCoursenumChange = (e) => {
+        this.setState({courseNum:e.target.value})
+    }
+
+    handleSubmitCourse = () => {
+        const {year, semester, title, grade, link, courseNum} = this.state
+        if(year && semester && title && grade && link && courseNum){
+            axios({
+                method:'post',
+                url:'/post/addCourse',
+                data:{
+                    year:year,
+                    semester:semester,
+                    title:title,
+                    grade:grade,
+                    link:link,
+                    courseNum:courseNum
+                }
+            })
+            .then(res => {
+                if(res.data.result === 1){
+                    console.log("Add complete")
+                    this.setState({
+                        year:"",
+                        semester:semester,
+                        title:"",
+                        grade:grade,
+                        link:"",
+                        courseNum:"",
+                    })
+                }else if(res.data.result === 0){
+                    console.error("Add error occured!")
+                }
+            })
+        }else{
+            console.log("please input complete")
+        }
+    }
+
+    
 
     render() {
         console.log(this.state)
@@ -144,31 +215,33 @@ export default class Admin extends Component {
                             <div className="pub-desc">
                                 <label for="exampleInputEmail1"></label>
                                 <div className="pub-sub">
-                                <input type="page" className="form-control" id="exampleInputEmail1" placeholder="year"/>
+                                <input onChange={this.handleYearChange} value={this.state.year} className="form-control" id="exampleInputEmail1" placeholder="Year"/>
                                 </div>
                                 <div className="pub-sub">
-                                <input type="url" className="form-control" id="exampleInputEmail1" placeholder="course title"/>
-                                </div>
-                                
-                                <div className="pub-sub">
-                                <input type="url" className="form-control" id="exampleInputEmail1" placeholder="link"/>
+                                <input onChange={this.handleCoursenumChange} value={this.state.courseNum} className="form-control" id="exampleInputEmail1" placeholder="Course Num"/>
                                 </div>
                                 <div className="pub-sub">
-                                    <select>
-                                        <option>Spring</option>      
-                                        <option>Fall</option>
+                                <input onChange={this.handleTitleChange} value={this.state.title} className="form-control" id="exampleInputEmail1" placeholder="Course Title"/>
+                                </div>
+                                <div className="pub-sub">
+                                <input onChange={this.handleLinkChange} value={this.state.link} className="form-control" id="exampleInputEmail1" placeholder="Link URL"/>
+                                </div>
+                                <div className="pub-sub">
+                                    <select onChange={this.handleSemesterChange}>
+                                        <option value="spring">Spring</option>      
+                                        <option value="fall">Fall</option>
                                     </select>
                                 </div>
                                 <div className="pub-sub">
-                                    <select>
-                                        <option>Undergrauduate</option>      
-                                        <option>Graduate</option>
+                                    <select onChange={this.handleGradeChange}>
+                                        <option value="Undergraduate">Undergraduate</option>      
+                                        <option value="Postgraduate">Postgraduate</option>
                                     </select>
                                 </div>
                                 
                                 
                                 <div className="pub-sub">
-                                <button type="submit" className="btn btn-default">Add</button>
+                                <button onClick={this.handleSubmitCourse} className="btn btn-default">Add</button>
                                 </div>
                             </div>
                         </div>
