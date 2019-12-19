@@ -14,7 +14,7 @@
 * MongoDB
 
 ## How to turn on the server
-#### You have to installed pm2 for back-end server
+#### You have to install pm2 for back-end server
 * On Main folder -> npm start // react-script
 * On Apiserver folder -> npm start // pm2
 * On Your local -> turn on mongoDB
